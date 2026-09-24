@@ -4,5 +4,5 @@
     "strict": true, "esModuleInterop": true, "skipLibCheck": true,
     "resolveJsonModule": true, "noEmit": true, "types": ["node"]
   },
-  "include": ["src/**/*.ts", "tests/**/*.ts", "scripts/**/*.ts"]
+  "include": ["objectstack.config.ts", "src/**/*.ts", "tests/**/*.ts", "scripts/**/*.ts"]
 }

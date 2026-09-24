@@ -1,5 +1,7 @@
 # Browser verification handoff
 
+> Historical builder milestone at commit `3663945`. The ports, commands and architecture below describe the retired builder. Use the current [README](../README.md) and [in-app chat guide](app-chat.md) for setup and verification.
+
 ## Project and running services
 
 - Project: `/Users/codecaffiene/Desktop/jas-proj/stratum`

@@ -1,5 +1,7 @@
 # Native ObjectStack Agent refactor
 
+> Historical builder milestone at commit `3663945`. Its Task and execution registries have since been removed. See the current [in-app chat integration](app-chat.md).
+
 Date: 2026-09-24. ObjectStack packages remain pinned to 17.4.0.
 
 ## What changed

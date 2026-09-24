@@ -9,6 +9,9 @@ const set = (key, value) => {
   writeFileSync('.env', env, { mode: 0o600 });
 };
 for (const key of ['HR_AUTH_PASSWORD', 'HR_SECRET_KEY']) if (!parse(env)[key]) set(key, randomBytes(32).toString('hex'));
+if (!parse(env).OS_AUTH_SECRET) set('OS_AUTH_SECRET', existsSync('.stratum/preview-password') ? readFileSync('.stratum/preview-password', 'utf8').trim() : randomBytes(32).toString('hex'));
+if (!parse(env).OS_SEED_ADMIN_PASSWORD) set('OS_SEED_ADMIN_PASSWORD', existsSync('.stratum/preview-password') ? readFileSync('.stratum/preview-password', 'utf8').trim() : randomBytes(18).toString('hex'));
+for (const [key, value] of Object.entries({ OS_DATABASE_DRIVER: 'sqlite-wasm', OS_AUTH_URL: 'http://127.0.0.1:3000', OS_SEED_ADMIN_EMAIL: 'builder@stratum.local', OS_TELEMETRY_DISABLED: '1' })) if (!parse(env)[key]) set(key, value);
 if (!existsSync('.env')) writeFileSync('.env', env, { mode: 0o600 });
 
 if (!process.argv.includes('--connect')) {
@@ -31,10 +34,10 @@ const cookie = login.headers.get('set-cookie')?.split(';')[0];
 if (!cookie) throw new Error('Local HarnessRouter did not issue a session.');
 const response = await fetch(`${base}/v1/orgs/local/keys`, {
   method: 'POST', headers: { cookie, 'content-type': 'application/json' },
-  body: JSON.stringify({ name: 'Stratum local builder', member_id: 'local@localhost', workspace: '', workspace_default: true })
+  body: JSON.stringify({ name: 'Stratum app assistant', member_id: 'local@localhost', workspace: '', workspace_default: true })
 });
 if (!response.ok) throw new Error(`Could not create the local integration key (${response.status}).`);
 const result = await response.json();
 if (!result.key) throw new Error('No integration key returned.');
 set('HARNESSROUTER_API_KEY', result.key);
-console.log('Stratum connected to local HarnessRouter. Add your provider key in its Integrations screen, then npm run dev.');
+console.log('Stratum connected to local HarnessRouter. Add your provider key in its Integrations screen, then run npm run setup:harness and npm run dev.');

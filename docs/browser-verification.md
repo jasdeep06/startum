@@ -1,5 +1,7 @@
 # Chrome extension verification — 23 September 2026
 
+> Historical verification of the retired builder milestone. Current chat and drawer results are in the [in-app chat guide](app-chat.md) and [screenshot gallery](screenshots.md).
+
 ## Result
 
 The tested milestone workflows passed through the connected ChatGPT Chrome extension in Person 1. All browser interactions in this pass used that extension. Credit Review is now on **version 3**.

@@ -1,6 +1,7 @@
 node_modules/
 .env
 .stratum/
+.objectstack/
 test-results/
 .DS_Store
 *.log

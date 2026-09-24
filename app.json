@@ -1,0 +1,173 @@
+{
+  "manifest": {
+    "id": "stratum-demo",
+    "namespace": "stratum_demo",
+    "version": "0.1.0",
+    "type": "app",
+    "name": "Credit Review",
+    "engines": {
+      "protocol": "^17"
+    }
+  },
+  "objects": [
+    {
+      "name": "stratum_demo_credit_request",
+      "label": "Credit request",
+      "pluralLabel": "Credit requests",
+      "icon": "file-text",
+      "nameField": "borrower",
+      "sharingModel": "public_read_write",
+      "fields": {
+        "borrower": {
+          "type": "text",
+          "label": "Borrower",
+          "required": true
+        },
+        "amount": {
+          "type": "number",
+          "label": "Requested amount",
+          "required": true
+        },
+        "status": {
+          "type": "select",
+          "label": "Review status",
+          "defaultValue": "new",
+          "options": [
+            {
+              "label": "New",
+              "value": "new"
+            },
+            {
+              "label": "Under review",
+              "value": "under_review"
+            },
+            {
+              "label": "Approved",
+              "value": "approved"
+            }
+          ]
+        },
+        "risk_grade": {
+          "type": "select",
+          "label": "Risk grade",
+          "required": true,
+          "options": [
+            {
+              "label": "Low",
+              "value": "low"
+            },
+            {
+              "label": "Medium",
+              "value": "medium"
+            },
+            {
+              "label": "High",
+              "value": "high"
+            }
+          ]
+        },
+        "notes": {
+          "type": "textarea",
+          "label": "Reviewer notes"
+        }
+      }
+    }
+  ],
+  "views": [
+    {
+      "object": "stratum_demo_credit_request",
+      "list": {
+        "type": "grid",
+        "label": "Credit requests",
+        "columns": [
+          "borrower",
+          "amount",
+          "status",
+          "risk_grade",
+          "notes"
+        ]
+      },
+      "form": {
+        "type": "simple",
+        "title": "Credit request",
+        "layout": "vertical",
+        "sections": [
+          {
+            "label": "Details",
+            "fields": [
+              "borrower",
+              "amount",
+              "status",
+              "risk_grade",
+              "notes"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "apps": [
+    {
+      "name": "credit_review",
+      "label": "Credit Review",
+      "icon": "building-2",
+      "description": "Review credit applications.",
+      "branding": {
+        "primaryColor": "#ff0000"
+      },
+      "navigation": [
+        {
+          "id": "requests",
+          "type": "object",
+          "objectName": "stratum_demo_credit_request",
+          "label": "Credit requests",
+          "icon": "file-text"
+        }
+      ]
+    }
+  ],
+  "data": [
+    {
+      "object": "stratum_demo_credit_request",
+      "mode": "upsert",
+      "externalId": "borrower",
+      "records": [
+        {
+          "borrower": "Northstar Services",
+          "amount": 50000,
+          "status": "new",
+          "risk_grade": "low",
+          "notes": "Seasonal inventory expansion."
+        },
+        {
+          "borrower": "Blue Harbor Logistics",
+          "amount": 125000,
+          "status": "under_review",
+          "risk_grade": "high",
+          "notes": "Reviewing recent revenue trend and debt load."
+        },
+        {
+          "borrower": "Evergreen Medical Supply",
+          "amount": 78000,
+          "status": "approved",
+          "risk_grade": "low",
+          "notes": "Strong cash flow and long operating history."
+        },
+        {
+          "borrower": "Summit Trail Outfitters",
+          "amount": 34000,
+          "status": "new",
+          "risk_grade": "medium",
+          "notes": "Requested for new retail location buildout."
+        },
+        {
+          "borrower": "Harborview Design Studio",
+          "amount": 92000,
+          "status": "under_review",
+          "risk_grade": "medium",
+          "notes": "Awaiting updated financial statements."
+        }
+      ]
+    }
+  ]
+}

@@ -1,18 +1,14 @@
 import 'dotenv/config';
 import { resolve } from 'node:path';
 
-export const root = resolve(import.meta.dirname, '..');
-export const stateDir = resolve(root, '.stratum');
-export const port = Number(process.env.STRATUM_PORT || 3000);
-export const previewPort = Number(process.env.PREVIEW_PORT || 3002);
-export const origin = `http://127.0.0.1:${port}`;
+// ObjectStack bundles config imports, so module paths do not locate the project.
+export const root = resolve(process.cwd());
+export const origin = process.env.OS_AUTH_URL || 'http://127.0.0.1:3000';
 export const harnessBase = process.env.HARNESSROUTER_BASE_URL || 'http://127.0.0.1:3100/api/harness';
-const target = new URL(harnessBase);
-if (!['127.0.0.1', 'localhost', '[::1]'].includes(target.hostname) || target.protocol !== 'http:') {
-  throw new Error('Use a local HarnessRouter HTTP address. Cloud routing is disabled for this milestone.');
+for (const address of [origin, harnessBase]) {
+  const url = new URL(address);
+  if (url.protocol !== 'http:' || !['127.0.0.1', 'localhost', '[::1]'].includes(url.hostname)) {
+    throw new Error('This milestone requires local ObjectStack and HarnessRouter addresses.');
+  }
 }
-export const binding = {
-  provider: 'harnessrouter-local' as const,
-  harnessId: process.env.HARNESSROUTER_HARNESS_ID || 'codex',
-  model: process.env.HARNESSROUTER_MODEL || undefined,
-};
+export const model = process.env.HARNESSROUTER_MODEL || 'gpt-5.4-mini';

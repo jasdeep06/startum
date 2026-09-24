@@ -1,5 +1,7 @@
 # Milestone 1: local HarnessRouter → ObjectStack
 
+> Historical builder milestone at commit `3663945`. The current application supports in-app questions and summaries; see the [README](../README.md) and [in-app chat guide](app-chat.md).
+
 ## Result
 
 The integration produced a real ObjectStack application from a plain-language request, then modified it through follow-up requests. The app displayed inside Stratum is ObjectStack's own Console backed by its runtime and data API. A subsequent [Chrome extension verification pass](browser-verification.md) confirmed native record operations and a third prompt-to-preview run.
