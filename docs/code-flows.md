@@ -2,6 +2,8 @@
 
 This guide follows the current implementation. It connects the Stratum document's Agent and Task concepts to the working application-building loop. The Mermaid diagrams render directly on GitHub.
 
+Start with [the simpler implementation walkthrough](simple-flow.md) for one flow connecting what we built, why each concept exists and where its code lives.
+
 An example request throughout is: **“Change Reviewer notes to Review notes, keeping everything else unchanged.”** The coding harness edits the native ObjectStack `app.json`; Stratum checks the result and runs it as a candidate application version.
 
 ## The concepts used here
