@@ -1,0 +1,7 @@
+{
+  "manifest": {
+    "id": "stratum-demo", "namespace": "stratum_demo", "version": "0.1.0",
+    "type": "app", "name": "My application", "engines": { "protocol": "^17" }
+  },
+  "objects": [], "views": [], "apps": [], "data": []
+}

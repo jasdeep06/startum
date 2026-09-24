@@ -1,0 +1,15 @@
+services:
+  harnessrouter:
+    image: harnessrouter/harnessrouter@sha256:fbe673409a6b921fff0a5a5ce1b13035f3280977edbe8f65fb9a59169ca44bf0
+    ports:
+      - "127.0.0.1:3100:3000"
+    environment:
+      HR_AUTH_USER: ${HR_AUTH_USER:-stratum}
+      HR_AUTH_PASSWORD: ${HR_AUTH_PASSWORD:?Run npm run setup first}
+      HR_SECRET_KEY: ${HR_SECRET_KEY:?Run npm run setup first}
+      HR_BACKENDS: codex,claude
+    volumes:
+      - harnessrouter:/data
+    restart: unless-stopped
+volumes:
+  harnessrouter:

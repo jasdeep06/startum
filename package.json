@@ -1,0 +1,22 @@
+{
+  "name": "stratum", "version": "0.1.0", "private": true, "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "dev": "tsx src/server.ts", "start": "tsx src/server.ts",
+    "setup": "node scripts/setup.mjs", "setup:harness": "tsx scripts/configure-harness.ts",
+    "harness:up": "docker compose up -d",
+    "harness:down": "docker compose down",
+    "typecheck": "tsc --noEmit", "test": "tsx --test tests/*.test.ts",
+    "verify": "node scripts/verify.mjs", "verify:live": "node scripts/verify.mjs --live"
+  },
+  "dependencies": {
+    "@objectstack/core": "17.4.0", "@objectstack/metadata": "17.4.0",
+    "@objectstack/spec": "17.4.0", "@objectstack/runtime": "17.4.0",
+    "@objectstack/plugin-hono-server": "17.4.0", "@objectstack/cli": "17.4.0",
+    "express": "^5.1.0", "zod": "^4.0.0", "dotenv": "^16.6.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3", "@types/node": "^22.0.0",
+    "tsx": "^4.20.0", "typescript": "^5.9.0"
+  }
+}
