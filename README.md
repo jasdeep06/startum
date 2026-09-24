@@ -4,6 +4,8 @@ Describe an application, let a coding harness edit its native ObjectStack metada
 
 The working demonstration is **Credit Review**: five fictional borrowers, a list and create/edit forms, followed by a required Low/Medium/High risk grade. The first three real runs through local HarnessRouter and Codex produced the application, added risk grade and renamed Notes to Reviewer notes. See [the implementation notes](docs/milestone-1.md), [browser verification results](docs/browser-verification.md) and [the handoff](docs/browser-handoff.md).
 
+For a visual walkthrough, see [the code flowcharts](docs/code-flows.md): the overall request flow, plugin registration, Task resolution, Intelligence service execution and ObjectStack preview lifecycle.
+
 ## Open the running application
 
 - **Stratum:** <http://127.0.0.1:3000>
